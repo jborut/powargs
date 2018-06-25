@@ -137,4 +137,4 @@ In this case -IntArg is required argument, others are optional. Value in __()__ 
 
 ## More Examples
 
-Feel free to take a look at the [Unit tests](https://github.com/jborut/powarg/blob/master/UnitTests/TestParser.cs).
+Feel free to take a look at the [Unit tests](https://github.com/jborut/powargs/blob/master/UnitTests/TestParser.cs).
