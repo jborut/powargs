@@ -1,4 +1,4 @@
-# PowArg
+# PowArgs
 _Powershell like arguments for your .Net project_
 
 Aim of this library is to easily parse array of strings (arguments) and convert them to a custom defined POCO object.
@@ -10,19 +10,19 @@ Simply define a POCO class that will define your arguments as properties. Add ar
 ```csharp
 public class Arguments
 {
-    [PowArg.Argument.Argument("Int argument")]
+    [PowArgs.Argument.Argument("Int argument")]
     public int IntArg { get; set; } = 10;
 
-    [PowArg.Argument.Argument("Float argument")]
+    [PowArgs.Argument.Argument("Float argument")]
     public float FloatArg { get; set; } = 11f;
 
-    [PowArg.Argument.Argument("Decimal argument")]
+    [PowArgs.Argument.Argument("Decimal argument")]
     public decimal DecimalArg { get; set; } = 12M;
 
-    [PowArg.Argument.Argument("String argument")]
+    [PowArgs.Argument.Argument("String argument")]
     public string StringArg { get; set; } = "string'";
 
-    [PowArg.Argument.Argument("Boolean argument")]
+    [PowArgs.Argument.Argument("Boolean argument")]
     public bool BoolArg { get; set; } = false;
 }
 ```
@@ -30,7 +30,7 @@ public class Arguments
 Argument attribute requires description of the property which will be used to generate help text. It can also accept *required* switch which defaults to *false*.
 
 ```csharp
-[PowArg.Argument.Argument("Argument description", required: false)]
+[PowArgs.Argument.Argument("Argument description", required: false)]
 ```
 
 If argument is not passed to _Parser_ the default value defined in the class will be used, unless the argument is marked as required in which case _Parser_ will throw an exception.
@@ -44,7 +44,7 @@ private static void Main(string[] args)
 {
     // args = { "2", "3", "4", "5", "true" }
 
-    var arguments = PowArg.Parser<Arguments>.Parse(args);
+    var arguments = PowArgs.Parser<Arguments>.Parse(args);
 
     // arguments.IntArg == 2;
     // arguments.FloatArg == 3f;
@@ -70,7 +70,7 @@ private static void Main(string[] args)
     }
     */
 
-    var arguments = PowArg.Parser<Arguments>.Parse(args);
+    var arguments = PowArgs.Parser<Arguments>.Parse(args);
 
     // arguments.IntArg == 5;
     // arguments.FloatArg == 4f;
@@ -83,7 +83,7 @@ private static void Main(string[] args)
 Boolean arguments don't require value. If value is not defined, they will be set to *true*:
 
 ```csharp
-var arguments = PowArg.Parser<Arguments>.Parse(new[]
+var arguments = PowArgs.Parser<Arguments>.Parse(new[]
 {
     "-IntArg", "5",
     "-BoolArg"
@@ -98,7 +98,7 @@ By default argument names will start with **-** character (i.e. -Name). This can
 
 ```csharp
 // use / as argument name prefix
-PowArg.Parser.Parse(args, "/");
+PowArgs.Parser.Parse(args, "/");
 ```
 
 ### Argument position
@@ -117,7 +117,7 @@ _Parser_ will throw exception in this cases:
 Library can generate help text that describes all the arguments.
 
 ```csharp
-string[] help = Helper<Arguments>.GetHelpText();
+string[] help = PowArgs.Helper<Arguments>.GetHelpText();
 
 Console.WriteLine(string.Join("\n", help));
 ```
