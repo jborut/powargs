@@ -1,7 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <Authors>Borut Jegrisnik</Authors>
+    <Description>Powershell like arguments for your .Net project.
+
+Aim of this library is to easily parse array of strings (arguments) and convert them to a custom defined POCO object.</Description>
+    <Copyright>Borut Jegrisnik</Copyright>
+    <PackageLicenseUrl>https://github.com/jborut/powargs/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jborut/powargs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jborut/powargs</RepositoryUrl>
+    <RepositoryType>Girhub</RepositoryType>
+    <PackageTags>arguments, args</PackageTags>
+    <PackageReleaseNotes>Target .Net Standard 1.1</PackageReleaseNotes>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
 </Project>

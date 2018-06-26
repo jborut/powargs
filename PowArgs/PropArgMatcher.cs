@@ -14,7 +14,7 @@ namespace PowArgs
         {
             SortedDictionary<string, PropArg> result = new SortedDictionary<string, PropArg>();
 
-            foreach (PropertyInfo property in obj.GetType().GetProperties())
+            foreach (PropertyInfo property in obj.GetType().GetRuntimeProperties())
             {
                 if (property.GetCustomAttribute(typeof(ArgumentAttribute)) is ArgumentAttribute argument)
                 {
