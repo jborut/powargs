@@ -1,7 +1,15 @@
 # PowArgs
 _Powershell like arguments for your .Net project_
 
-Aim of this library is to easily parse array of strings (arguments) and convert them to a custom defined POCO object.
+Aim of this library is to easily parse array of strings (arguments) and convert them to a custom defined POCO object. Arguments can be parsed by position or name.
+
+## Installation
+
+```
+PM> Install-Package PowArgs
+```
+
+Check this [NuGet](https://www.nuget.org/packages/PowArgs/) page with list of versions and release notes.
 
 ## Usage
 
@@ -10,19 +18,19 @@ Simply define a POCO class that will define your arguments as properties. Add ar
 ```csharp
 public class Arguments
 {
-    [PowArgs.Argument.Argument("Int argument")]
+    [PowArgs.Attributes.Argument("Int argument")]
     public int IntArg { get; set; } = 10;
 
-    [PowArgs.Argument.Argument("Float argument")]
+    [PowArgs.Attributes.Argument("Float argument")]
     public float FloatArg { get; set; } = 11f;
 
-    [PowArgs.Argument.Argument("Decimal argument")]
+    [PowArgs.Attributes.Argument("Decimal argument")]
     public decimal DecimalArg { get; set; } = 12M;
 
-    [PowArgs.Argument.Argument("String argument")]
+    [PowArgs.Attributes.Argument("String argument")]
     public string StringArg { get; set; } = "string'";
 
-    [PowArgs.Argument.Argument("Boolean argument")]
+    [PowArgs.Attributes.Argument("Boolean argument")]
     public bool BoolArg { get; set; } = false;
 }
 ```
@@ -30,7 +38,7 @@ public class Arguments
 Argument attribute requires description of the property which will be used to generate help text. It can also accept *required* switch which defaults to *false*.
 
 ```csharp
-[PowArgs.Argument.Argument("Argument description", required: false)]
+[PowArgs.Attributes.Argument("Argument description", required: false)]
 ```
 
 If argument is not passed to _Parser_ the default value defined in the class will be used, unless the argument is marked as required in which case _Parser_ will throw an exception.
@@ -98,7 +106,7 @@ By default argument names will start with **-** character (i.e. -Name). This can
 
 ```csharp
 // use / as argument name prefix
-PowArgs.Parser.Parse(args, "/");
+PowArgs.Parser<Arguments>.Parse(args, "/");
 ```
 
 ### Argument position
@@ -138,3 +146,18 @@ In this case -IntArg is required argument, others are optional. Value in __()__ 
 ## More Examples
 
 Feel free to take a look at the [Unit tests](https://github.com/jborut/powargs/blob/master/UnitTests/TestParser.cs).
+
+## Support
+
+PowArgs supports the following platforms:
+
+- .NET Core 1.0 and above
+- .NET Framework 4.5 and above
+- Mono 4.6 and above
+- Xamarin.iOS 10.0 and above
+- Xamarin.Mac 3.0 and above
+- Xamarin.Android 7.0 and above
+- Universal Windows Platform 10.0 and above
+- Windows 8.0 and above
+- Windows Phone 8.1
+
